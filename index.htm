@@ -1,0 +1,385 @@
+<!doctype HTML>
+<html>
+    <head>
+        <title> Game Paradox - Shopping For Games </title>
+
+        <link href='https://fonts.googleapis.com/css?family=Aldrich' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Cairo' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Sarpanch' rel='stylesheet'>
+
+        <style>
+            body{
+                background-image: url("Background.jpg");
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: 100% 100%;
+                /*background-color:#FFFFFF;*/
+                
+            }
+
+            h1{
+                text-align: center;
+                font-family: 'Aldrich';
+                margin: 40px 170px;
+                padding: 10px;
+                border: 4px double red;
+                background-color: rgba(255, 0, 0, 0.65);
+            }
+
+            h2{
+                font-family: 'Cairo';
+                border-left: 6px solid rgba(0, 0, 255, 0.6);
+                background-color: rgba(176, 226, 255, 0.6);
+                padding-left: 2px;
+            }
+
+            h3{
+                padding: 5px;
+                border-left: 4px double white;
+                background-color: rgba(30, 255, 0, 0.5);
+                /*background-color: rgba(0, 0, 0, 0.5);*/
+            }
+
+            p{
+                font-family: 'Abel';
+                border: 1px solid gray;
+                border-radius: 5px;
+                padding: 4px;
+                background-color: rgba(255, 255, 255, 0.62);
+            }
+
+            div{
+                height: auto;
+                border: 2px dotted black;
+                background-color:rgba(0, 0, 0, 0.2);
+            }
+            
+
+            img{
+                float: left;
+                border: 2px solid black;
+                padding: 25px;
+                margin: 40px 20px;
+                width: 325px;
+                height: auto;
+                background-color: rgba(242, 242, 242, 0.9);
+            }
+
+            #logo{
+                background-color: rgba(255, 255, 255, 0.5);
+                width: 100px;
+                padding: 5px;
+                border: none;
+                position: absolute;
+                top: -25px;
+                left: 0px;
+
+            }
+
+            #customer_output,#company_output{
+                font-family: 'Sarpanch';
+                background-color: rgba(242, 242, 242, 0.62);
+                border: 2px dotted #00FF4C;
+                padding:4px;
+                width: 46%;
+                margin: 5px;
+                margin-top: 10px;
+            }
+
+            #customer_output{
+                float: left;
+            }
+            #company_output{
+                float: right;
+            }
+
+            
+
+            article{
+                margin-left: 10px;
+                /*border-left: 1px solid gray;*/
+                padding: 25px;
+                overflow: hidden;
+            }
+
+
+            ul{
+                list-style-type: square;
+                font-family: 'Abel';
+                border: 1px ridge gray;
+                border-radius: 5px;
+                padding: 4px;
+                background-color: rgba(255, 255, 255, 0.62);
+            }
+
+            span{
+                padding: 3px;
+                background-color: rgba(30, 255, 0, 0.5);
+                border-left: 1px solid white;
+                /*background-color: rgba(0, 0, 0, 0.5);*/
+            }
+            
+            #span1,#span2,#span3{
+                background-color: rgba(255, 255, 255, 0.9);
+                font-size: 20px;
+                border-left: 1px solid green;
+                border-bottom: 1px solid green;
+                padding: 2px;
+                font-family: 'Gruppo';
+            }
+
+            #original1,#original2,#original3{
+                font-family: 'Gruppo';
+                border: none;
+                background-color: rgba(255, 255, 255, 0.75);
+                color: red;
+            }
+
+            button{
+                margin-top: 20px;
+                margin-bottom: 5px;
+                margin-left: 45%;
+                padding: 10px 24px;
+                background-color: white;
+                border: 2px solid #4CAF50;
+            }
+
+            input{
+                background-color:rgba(255, 255, 255, 0.8);
+            }
+
+            #copyright{
+                text-align: center;
+                border: none;
+                margin-top: 50px;
+                float: bottom;
+            }
+            
+        </style>
+
+        <script>
+            /*
+            A. Zheng
+            3 Nov. 2017
+            eCommerce Project
+            */
+
+            //Define Global Variables - variables recognized throughout the program.
+            
+            //retail prices
+            var pr1=50;
+            var pr2=30;
+            var pr3=40;
+
+            //wholesale prices
+            var wpr1=35;
+            var wpr2=20;
+            var wpr3=25;
+
+            //original prices
+            var opr1=60;
+            var opr2=35;
+            var opr3=50;
+
+            //savings
+            var Saving1= opr1-pr1;
+            var Saving2= opr2-pr2;
+            var Saving3= opr3-pr3;
+
+            //taxrate
+            var TaxRate = 8.75;
+
+            function initPrices(){
+                document.getElementById("span1").innerHTML = "<b>Price: $" +pr1+"</b>";
+                document.getElementById("span2").innerHTML = "<b>Price: $" +pr2+"</b>";
+                document.getElementById("span3").innerHTML = "<b>Price: $" +pr3+"</b>";
+
+                document.getElementById("original1").innerHTML = "<b><s>Original Price: $" +opr1+ "</s> &nbsp; &nbsp; &nbsp; &nbsp; // &nbsp; &nbsp; &nbsp; &nbsp; You Save: $" + Saving1 + " Each </b>";
+                document.getElementById("original2").innerHTML = "<b><s>Original Price: $" +opr2+ "</s> &nbsp; &nbsp; &nbsp; &nbsp; // &nbsp; &nbsp; &nbsp; &nbsp; You Save: $" + Saving2 + " Each </b>";
+                document.getElementById("original3").innerHTML = "<b><s>Original Price: $" +opr3+ "</s> &nbsp; &nbsp; &nbsp; &nbsp; // &nbsp; &nbsp; &nbsp; &nbsp; You Save: $" + Saving3 + " Each </b>";
+    
+            }
+
+            function processOrder(){
+
+                //use getElementById to get an element by its id from the body
+                var cu_op = document.getElementById("customer_output");
+                var co_op = document.getElementById("company_output");
+                //value refers to the content in the input textbox
+                var qty1 = parseInt(document.getElementById("quantity1").value);
+                var qty2 = parseInt(document.getElementById("quantity2").value);
+                var qty3 = parseInt(document.getElementById("quantity3").value);
+
+                //calculations
+                var Customer_Subtotal = (pr1*qty1)+(pr2*qty2)+(pr3*qty3);
+                var Tax = parseFloat((Customer_Subtotal*TaxRate/100).toFixed(2));
+
+                var Company_Subtotal = (wpr1*qty1)+(wpr2*qty2)+(wpr3*qty3);
+                var Profit = Customer_Subtotal-Company_Subtotal;
+                var TotalItemsSold = qty1+qty2+qty3;
+
+                var TotalSaving = Saving1*qty1 + Saving2*qty2 + Saving3*qty3;
+                //decisions
+                var Shipping;
+                if (Customer_Subtotal<100){
+                    Shipping=25;
+                }else if (Customer_Subtotal>=100 && Customer_Subtotal<=200){
+                    Shipping=10;
+                }else{
+                    Shipping=0;
+                }
+
+                var Total = Customer_Subtotal+Tax+Shipping;
+
+                //build
+                var Customer_Info = "";
+                Customer_Info += "<h4> Customer Info </h4>";
+                Customer_Info += "<hr><br>";
+                Customer_Info += "Subtotal: $" + Customer_Subtotal + "<br>";
+                Customer_Info += "Tax: $" + Tax + "<br>";
+                Customer_Info += "Shipping: $" + Shipping + "<br>";
+                Customer_Info += "Total: $" + Total + "<br><br>";
+                Customer_Info += "You Saved: $" + TotalSaving + "<br>";
+
+                var Company_Info = "";
+                Company_Info += "<h4> Company Info </h4>";
+                Company_Info += "<hr><br>";
+                Company_Info += "Customer Subtotal: $" + Customer_Subtotal + "<br>";
+                Company_Info += "Company Subtotal: $" + Company_Subtotal + "<br>";
+                Company_Info += "Profit: $" + Profit + "<br>";
+                Company_Info += "Total Items Sold: " + TotalItemsSold + "<br><br>";
+                Company_Info += "Customer Savings: $" + TotalSaving + "<br>";
+
+                
+                //innerHTML allows you to write HTML into an element such as a div
+                cu_op.innerHTML = Customer_Info;
+                co_op.innerHTML = Company_Info;
+            }
+
+
+
+        </script>
+    </head>
+
+    <body onload="initPrices()">
+        <!-- Heading -->
+        <h1> GAME PARADOX </h1>
+        <img src = "Logo.png" id = "logo">
+        <!-- Game Paradox Logo rightfully belongs to L.Z // No permission to reuse or repost, commercially or personally.-->
+        <!-- Item 1 -->
+        <div>
+            <img src="FFVI_GBA.jpg">
+
+            <article>
+                <h2> Final Fantasy VI Advance Nintendo GBA Game Cartridge </h2><br>
+                <h3>Item Description</h3>
+                <p> 
+                    Following the story of Terra, players who journey into the portable world of Final Fantasy VI Advance will learn to conjure and control creatures called espers by harnessing the power of magic. 
+                    Gamers lead Terra through two worlds and a variety of environments as they fight the evil Empire. Throughout the story, players interact with a variety of characters who often join Terra's party. 
+                    Each character has their own fighting style, and players can adjust the settings for each avatar in the group. 
+                </p>
+                <h3> Item Specifics</h3>
+                <p>
+                    Platform: Nintendo Game Boy Advance <br>
+                    Location: USA <br>
+                    Region Code: NTSC-U/C (US/CA)<br>
+                    Genre: Role Playing <br>
+                    Publisher: Nintendo <br>
+                    Release Year: 2007 <br>
+                    ESRB Rating: E10+ (Everyone 10+) <br>
+                    ESRB Descriptor: Fantasy Violence, Mild Suggestive Themes<br><br>
+                </p>
+                <span><b>Game Special Features</b></span>
+                <ul>
+                    <!-- Listed Items -->
+                    <li>Learn new spells and how to summon creatures known as espers</li>
+                    <li>Interact with other characters and fight beside them as they journey with you through the story</li>
+                    <li>Lead Terra through an adventure spanning two worlds and a variety of environments</li>
+                </ul><br>
+                <span id="span1"> </span><br><br>
+                <span id="original1"></span><br><br><br>
+                <input type="text"id="quantity1"placeholder="Quantity">
+            </article>
+        </div>
+        <hr>
+
+        <!-- Item 2 -->
+        <div>
+            <img src="Bloodborne_PS4.jpg">
+            <article>
+                <h2> Bloodborne PlayStation 4 </h2><br>
+                <h3>Item Description</h3>
+                <p> 
+                    Once an ancient and noble city Yharnam has become a twisted ghost of its former self. 
+                    An incomprehensible endemic illness flooded the streets and ravaged the population leaving behind only deranged mobs and creatures too bizarre and frightening to imagine. 
+                    The only way to survive is to bring the darkest secrets of Yharnam into the light but this task is easier said than done — lethal stealthy foes stand ready to destroy you at every turn and madness reigns supreme on the citys horrorfilled streets. 
+                </p>
+                <h3> Item Specifics</h3>
+                <p>
+                    Platform: Sony PlayStation 4 <br>
+                    Location: USA <br>
+                    Region Code: NTSC-U/C (US/CA)<br>
+                    Genre: Role Playing <br>
+                    Publisher: Sony <br>
+                    Release Year: 2015 <br>
+                    ESRB Rating: M - Mature <br>
+                    ESRB Descriptor: Blood and Gore, Violence<br><br>
+                </p>
+                <span><b>Game Special Features</b></span>
+                <ul>
+                    <!-- Listed Items -->
+                    <li>Explore a dark and mysterious Victorian world full of twisted beasts and hideous monsters</li>
+                    <li>Use melee weapons and rudimentary guns to engage in visceral, strategic combat</li>
+                    <li>Join friends for online co-op or competitive gameplay</li>
+                </ul><br>
+                <span id="span2"> </span><br><br>
+                <span id="original2"></span><br><br><br>
+                <input type="text"id="quantity2"placeholder="Quantity">
+            </article>
+        </div>
+        <hr>
+
+        <!-- Item 3 -->
+        <div>
+            <img src="ROTR_XBOX.jpg">
+            <article>
+                <h2> Rise of The Tomb Raider Xbox 360 </h2><br>
+                <h3>Item Description</h3>
+                <p> 
+                    Tomb Raider explores the intense and gritty origin story of Lara Croft and her ascent from a young woman to a hardened survivor. 
+                    Armed only with raw instincts and the ability to push beyond the limits of human endurance, Lara must fight to unravel the dark history of a forgotten island to escape its relentless hold. 
+                </p>
+                <h3> Item Specifics</h3>
+                <p>
+                    Platform: Microsoft Xbox 360 <br>
+                    Location: USA <br>
+                    Region Code: NTSC-U/C (US/CA)<br>
+                    Genre: Action/Adventure <br>
+                    Publisher: Microsoft <br>
+                    Release Year: 2015 <br>
+                    ESRB Rating: M - Mature <br>
+                    ESRB Descriptor: Blood and Gore, Intense Violence, Strong Language<br><br>
+                </p>
+                <span><b>Game Special Features</b></span>
+                <ul>
+                    <!-- Listed Items -->
+                    <li>Help Lara Croft search for the Siberian city of Kitezh and uncover the secret of immortality</li>
+                    <li>Explore tombs and battle unfriendly humans, ferocious beasts, and unforgiving environments</li>
+                    <li>Wield a variety of different weapons and tools and use new stealth attacks</li>
+                </ul><br>
+                <span id="span3"> </span><br><br>
+                <span id="original3"></span><br><br><br>
+                <input type="text"id="quantity3"placeholder="Quantity">
+            </article>
+            </div>
+            <div id=copyright><p>&copy; 2017 Game Paradox. All rights reserved</p></div>
+            <hr>
+            
+            <button onclick="processOrder()"> Process Order </button>
+            <div id="customer_output"></div>
+            <div id="company_output"></div>
+
+    </body>
+</html>
